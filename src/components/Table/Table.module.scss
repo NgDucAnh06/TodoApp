@@ -1,0 +1,49 @@
+@import '../GlobalStyle/variables';
+
+.tableWrapper {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    padding: 28px;
+}
+
+.tableWrapper h2 {
+    color: $text-color;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 20px 0;
+}
+
+.todoTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.todoTable thead th {
+    text-align: left;
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #777;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #eee;
+}
+
+.todoTable tbody td {
+    padding: 12px 14px;
+    font-size: 14px;
+    color: $text-color;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.todoTable tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.emptyRow {
+    text-align: center;
+    color: #bbb;
+    padding: 40px 14px !important;
+    font-style: italic;
+}

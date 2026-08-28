@@ -1,0 +1,25 @@
+@import '../GlobalStyle/variables';
+
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header h1 {
+    color: $red-color;
+    font-size: 80px;
+    font-weight: 200;
+    text-transform: lowercase;
+    margin-bottom: 0;
+}
+
+.header p {
+    color: #777;
+    font-size: 16px;
+    font-weight: 300;
+    margin-top: 8px;
+    letter-spacing: 0.5px;
+}
+
