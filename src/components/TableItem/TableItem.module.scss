@@ -10,10 +10,14 @@
 
 .completed {
     color: $gray-color;
-}
 
-.completed .todoText {
-    text-decoration: line-through 2px $gray-color;
+    .todoText {
+        text-decoration: line-through 2px $gray-color;
+    }
+
+    .priorityBadge {
+        opacity: 0.5;
+    }
 }
 
 .todoCell {
@@ -23,11 +27,39 @@
     cursor: pointer;
 }
 
+.todoText {
+    font-weight: 500;
+}
+
 .checkbox {
-    width: 16px;
-    height: 16px;
+    width: 17px;
+    height: 17px;
     accent-color: $red-color;
     cursor: pointer;
+}
+
+.priorityBadge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.priorityHigh {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+.priorityMedium {
+    background-color: #fef3c7;
+    color: #d97706;
+}
+
+.priorityLow {
+    background-color: #e0e7ff;
+    color: #4f46e5;
 }
 
 .actionCell {
@@ -42,12 +74,9 @@
     font-size: 13px;
     font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.2s ease, opacity 0.2s ease;
-}
-
-.deleteBtn {
     background-color: #fde8e8;
     color: $red-color;
+    transition: background-color 0.2s ease;
 
     &:hover {
         background-color: #fbd0d0;

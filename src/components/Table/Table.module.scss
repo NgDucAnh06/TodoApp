@@ -1,17 +1,13 @@
 @import '../GlobalStyle/variables';
 
 .tableWrapper {
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    padding: 28px;
 }
 
 .tableWrapper h2 {
     color: $text-color;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 600;
-    margin: 0 0 20px 0;
+    margin: 0 0 12px 0;
 }
 
 .todoTable {
@@ -21,8 +17,8 @@
 
 .todoTable thead th {
     text-align: left;
-    padding: 10px 14px;
-    font-size: 13px;
+    padding: 8px 10px;
+    font-size: 11px;
     font-weight: 600;
     color: #777;
     text-transform: uppercase;
@@ -31,8 +27,8 @@
 }
 
 .todoTable tbody td {
-    padding: 12px 14px;
-    font-size: 14px;
+    padding: 8px 10px;
+    font-size: 13px;
     color: $text-color;
     border-bottom: 1px solid #f0f0f0;
 }
@@ -44,6 +40,7 @@
 .emptyRow {
     text-align: center;
     color: #bbb;
-    padding: 40px 14px !important;
+    padding: 24px 10px !important;
     font-style: italic;
+    font-size: 13px;
 }

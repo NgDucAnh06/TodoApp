@@ -1,20 +1,21 @@
 .App {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
+    width: 100%;
+    padding: 0 80px;
 }
 
 .main-content {
     display: flex;
-    gap: 32px;
+    flex-direction: row;
+    gap: 24px;
     align-items: flex-start;
-    margin-top: 24px;
+    margin-top: 20px;
 }
 
 .main-content > *:first-child {
-    flex: 0 0 360px;
+    flex: 1;
 }
 
 .main-content > *:last-child {
     flex: 1;
+    min-width: 0;
 }
