@@ -21,7 +21,7 @@ function Table({ todos, onDeleteTodo, onCompleteTodo }) {
                     {todos.length === 0 ? (
                         <tr>
                             <td colSpan="5" className={style.emptyRow}>
-                                No todos yet. Add one to get started!
+                                No todos to display.
                             </td>
                         </tr>
                     ) : (

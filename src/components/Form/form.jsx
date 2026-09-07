@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import style from './Form.module.scss';
 
 const initialValues = {
@@ -12,7 +12,7 @@ function getTodayDateString() {
     return new Date().toLocaleDateString('en-CA');
 }
 
-function validate(values, todayString) {
+function validate(values, todayString, existingTodos = []) {
     const errors = {};
     const title = values.title.trim();
     const description = values.description.trim();
@@ -23,6 +23,12 @@ function validate(values, todayString) {
         errors.title = 'Title must contain at least 3 characters!';
     } else if (title.length > 50) {
         errors.title = 'Title cannot be over 50 characters!';
+    } else if (
+        existingTodos.some(
+            (todo) => (todo.title || '').trim().toLowerCase() === title.toLowerCase(),
+        )
+    ) {
+        errors.title = 'Title already exists!';
     }
 
     if (!description) {
@@ -40,18 +46,18 @@ function validate(values, todayString) {
     return errors;
 }
 
-function Form({ onAddTodo }) {
+function Form({ onAddTodo, existingTodos = [] }) {
     const [values, setValues] = useState(initialValues);
     const [errors, setErrors] = useState({});
 
-    const todayString = useMemo(() => getTodayDateString(), []);
+    const todayString = getTodayDateString();
 
     const handleChange = (event) => {
         const { name, value } = event.target;
 
         setValues((previousValues) => ({
             ...previousValues,
-            [name]: value,
+            [name]: value, // computed property name
         }));
 
         if (errors[name]) {
@@ -65,8 +71,9 @@ function Form({ onAddTodo }) {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        const validationErrors = validate(values, todayString);
+        const validationErrors = validate(values, todayString, existingTodos);
 
+        //chuyển object thành array để kiểm tra length
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
             return;
@@ -80,9 +87,7 @@ function Form({ onAddTodo }) {
             completed: false,
         };
 
-        if (typeof onAddTodo === 'function') {
-            onAddTodo(newTodo);
-        }
+        onAddTodo(newTodo);
         setValues(initialValues);
         setErrors({});
     };

@@ -1,9 +1,9 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import {
-    fetchTodos,
-    addTodo,
-    deleteTodo,
-    updateTodo,
+    fetchTodosFirebase,
+    addTodoFirebase,
+    deleteTodoFirebase,
+    updateTodoFirebase,
 } from '../../firebase/firebaseService';
 import {
     fetchTodosRequest,
@@ -19,7 +19,7 @@ import {
 
 function* fetchTodosSaga() {
     try {
-        const todos = yield call(fetchTodos);
+        const todos = yield call(fetchTodosFirebase);
         yield put(setTodos(todos));
     } catch (error) {
         yield put(setError(error.message));
@@ -28,7 +28,7 @@ function* fetchTodosSaga() {
 
 function* addTodoSaga(action) {
     try {
-        const newTodo = yield call(addTodo, action.payload);
+        const newTodo = yield call(addTodoFirebase, action.payload);
         yield put(addTodoSuccess(newTodo));
     } catch (error) {
         yield put(setError(error.message));
@@ -37,7 +37,7 @@ function* addTodoSaga(action) {
 
 function* deleteTodoSaga(action) {
     try {
-        yield call(deleteTodo, action.payload);
+        yield call(deleteTodoFirebase, action.payload);
         yield put(deleteTodoSuccess(action.payload));
     } catch (error) {
         yield put(setError(error.message));
@@ -47,14 +47,13 @@ function* deleteTodoSaga(action) {
 function* completeTodoSaga(action) {
     try {
         const { todoId, completed } = action.payload;
-        yield call(updateTodo, todoId, { completed: !completed });
-        yield put(completeTodoSuccess(todoId));
+        const updatedTodo = yield call(updateTodoFirebase, todoId, { completed });
+        yield put(completeTodoSuccess(updatedTodo));
     } catch (error) {
         yield put(setError(error.message));
     }
 }
 
-// watcher saga
 export default function* todoSaga() {
     yield takeLatest(fetchTodosRequest.type, fetchTodosSaga);
     yield takeLatest(addTodoRequest.type, addTodoSaga);
