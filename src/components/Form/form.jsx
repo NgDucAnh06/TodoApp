@@ -1,5 +1,4 @@
 import { useState, useMemo } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import style from './Form.module.scss';
 
 const initialValues = {
@@ -74,7 +73,6 @@ function Form({ onAddTodo }) {
         }
 
         const newTodo = {
-            id: uuidv4(),
             title: values.title.trim(),
             description: values.description.trim(),
             priority: values.priority,
@@ -82,7 +80,9 @@ function Form({ onAddTodo }) {
             completed: false,
         };
 
-        onAddTodo(newTodo);
+        if (typeof onAddTodo === 'function') {
+            onAddTodo(newTodo);
+        }
         setValues(initialValues);
         setErrors({});
     };

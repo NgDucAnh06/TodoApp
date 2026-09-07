@@ -1,29 +1,34 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './App.css';
 import Header from './components/Header/header';
 import Form from './components/Form/form';
 import Filter from './components/Filter/filter';
 import Table from './components/Table/table';
-import { addTodo, deleteTodo, completeTodo } from './redux/slices/todoSlice';
+import { addTodoRequest, deleteTodoRequest, completeTodoRequest, fetchTodosRequest } from './redux/slices/todoSlice';
 import { changeFilter, resetFilter } from './redux/slices/filterSlice';
 
 function App() {
     const dispatch = useDispatch();
-    const todos = useSelector((state) => state.todos);
+    const { items: todos, error } = useSelector((state) => state.todos);
     const filters = useSelector((state) => state.filters);
     const sortedList = useMemo(() => filterTodos(todos, filters), [todos, filters]);
 
+    // fetch todos từ firestore
+    useEffect(() => {
+        dispatch(fetchTodosRequest());
+    }, [dispatch]);
+
     const handleAddTodo = (todo) => {
-        dispatch(addTodo(todo));
+        dispatch(addTodoRequest(todo));
     };
 
     const handleDeleteTodo = (todoId) => {
-        dispatch(deleteTodo(todoId));
+        dispatch(deleteTodoRequest(todoId));
     };
 
-    const handleCompleteTodo = (todoId) => {
-        dispatch(completeTodo(todoId));
+    const handleCompleteTodo = (todoId, completed) => {
+        dispatch(completeTodoRequest({ todoId, completed }));
     };
 
     const handleFilterChange = (name, value) => {
@@ -41,6 +46,7 @@ function App() {
                 <Form onAddTodo={handleAddTodo} />
                 <div>
                     <Filter filters={filters} onFilterChange={handleFilterChange} onResetFilter={handleResetFilter} />
+                    {error && <div className="error-banner">{error}</div>}
                     <Table todos={sortedList} onDeleteTodo={handleDeleteTodo} onCompleteTodo={handleCompleteTodo} />
                 </div>
             </div>

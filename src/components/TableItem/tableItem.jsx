@@ -9,7 +9,7 @@ function TableItem({ todo, onDeleteTodo, onCompleteTodo }) {
                         className={style.checkbox}
                         type="checkbox"
                         checked={todo.completed}
-                        onChange={() => onCompleteTodo(todo.id)}
+                        onChange={() => onCompleteTodo(todo.id, todo.completed)}
                     />
                     <span className={style.todoText}>{todo.title}</span>
                 </label>
