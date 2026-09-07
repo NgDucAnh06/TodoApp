@@ -43,7 +43,7 @@ function App() {
         <div className="App">
             <Header />
             <div className="main-content">
-                <Form onAddTodo={handleAddTodo} />
+                <Form onAddTodo={handleAddTodo} existingTodos={todos} />
                 <div>
                     <Filter filters={filters} onFilterChange={handleFilterChange} onResetFilter={handleResetFilter} />
                     {error && <div className="error-banner">{error}</div>}

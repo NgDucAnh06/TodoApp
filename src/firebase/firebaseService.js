@@ -11,15 +11,15 @@ import { db } from './firebaseConfig';
 const COLLECTION_NAME = 'todos';
 const todosRef = collection(db, COLLECTION_NAME);
 
-export async function fetchTodos() {
+export async function fetchTodosFirebase() {
     const snapshot = await getDocs(todosRef);
     return snapshot.docs.map((doc) => ({
-        id: doc.id,
         ...doc.data(),
+        id: doc.id,
     }));
 }
 
-export async function addTodo(todo) {
+export async function addTodoFirebase(todo) {
     const docRef = await addDoc(todosRef, {
         title: todo.title,
         description: todo.description,
@@ -27,17 +27,17 @@ export async function addTodo(todo) {
         dueDate: todo.dueDate,
         completed: todo.completed,
     });
-    return { id: docRef.id, ...todo };
+    return { ...todo, id: docRef.id };
 }
 
-export async function deleteTodo(todoId) {
+export async function deleteTodoFirebase(todoId) {
     const todoDoc = doc(db, COLLECTION_NAME, todoId);
     await deleteDoc(todoDoc);
     return todoId;
 }
 
-export async function updateTodo(todoId, data) {
+export async function updateTodoFirebase(todoId, data) {
     const todoDoc = doc(db, COLLECTION_NAME, todoId);
     await updateDoc(todoDoc, data);
-    return { id: todoId, ...data };
+    return { ...data, id: todoId };
 }
