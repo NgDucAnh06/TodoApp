@@ -1,13 +1,36 @@
 @import '../GlobalStyle/variables';
 
-.todo-list-tableWrapper {
-}
+.todo-list-tableWrapper {}
 
 .todo-list-tableWrapper h2 {
     color: $text-color;
     font-size: 16px;
     font-weight: 600;
     margin: 0 0 12px 0;
+}
+
+.todo-list-notification {
+    padding: 8px 12px;
+    margin-bottom: 12px;
+    background-color: #edf7ed;
+    color: #1e4620;
+    border: 1px solid #c8e6c9;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
+    animation: todo-list-fadeIn 0.25s ease-in-out;
+}
+
+@keyframes todo-list-fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .todo-list-todoTable {

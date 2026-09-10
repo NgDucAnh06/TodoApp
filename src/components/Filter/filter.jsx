@@ -2,7 +2,7 @@ import './Filter.scss';
 
 function Filter({ filters = {}, onFilterChange, onResetFilter }) {
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const { name, value } = e.target;  
         if (onFilterChange) {
             onFilterChange(name, value);
         }

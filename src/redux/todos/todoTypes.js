@@ -7,3 +7,4 @@ export const ADD_TODO_SUCCESS = 'todo/addTodoSuccess';
 export const DELETE_TODO_SUCCESS = 'todo/deleteTodoSuccess';
 export const COMPLETE_TODO_SUCCESS = 'todo/completeTodoSuccess';
 export const SET_ERROR = 'todo/setError';
+export const CLEAR_NOTIFICATION = 'todo/clearNotification';
