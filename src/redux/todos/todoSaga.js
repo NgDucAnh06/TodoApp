@@ -4,7 +4,7 @@ import {
     addTodoFirebase,
     deleteTodoFirebase,
     updateTodoFirebase,
-} from '../../firebase/firebaseService';
+} from '../../firebase/todoService';
 import {
     fetchTodosRequest,
     setTodos,
@@ -15,7 +15,7 @@ import {
     completeTodoRequest,
     completeTodoSuccess,
     setError,
-} from '../slices/todoSlice';
+} from './todoActions';
 
 function* fetchTodosSaga() {
     try {

@@ -1,0 +1,9 @@
+export const FETCH_TODOS_REQUEST = 'todo/fetchTodosRequest';
+export const ADD_TODO_REQUEST = 'todo/addTodoRequest';
+export const DELETE_TODO_REQUEST = 'todo/deleteTodoRequest';
+export const COMPLETE_TODO_REQUEST = 'todo/completeTodoRequest';
+export const SET_TODOS = 'todo/setTodos';
+export const ADD_TODO_SUCCESS = 'todo/addTodoSuccess';
+export const DELETE_TODO_SUCCESS = 'todo/deleteTodoSuccess';
+export const COMPLETE_TODO_SUCCESS = 'todo/completeTodoSuccess';
+export const SET_ERROR = 'todo/setError';

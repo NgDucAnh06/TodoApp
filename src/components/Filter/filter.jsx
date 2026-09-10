@@ -1,4 +1,4 @@
-import style from './Filter.module.scss';
+import './Filter.scss';
 
 function Filter({ filters = {}, onFilterChange, onResetFilter }) {
     const handleChange = (e) => {
@@ -9,9 +9,9 @@ function Filter({ filters = {}, onFilterChange, onResetFilter }) {
     };
 
     return (
-        <div className={style.filterWrapper}>
-            <div className={style.searchBox}>
-                <span className={style.searchIcon}>
+        <div className="filterWrapper">
+            <div className="searchBox">
+                <span className="searchIcon">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
@@ -27,16 +27,16 @@ function Filter({ filters = {}, onFilterChange, onResetFilter }) {
                 </span>
                 <input
                     name="title"
-                    className={style.searchInput}
+                    className="searchInput"
                     type="text"
                     placeholder="Search todos..."
-                    value={filters.title || ''}
+                    value={filters.title}
                     onChange={handleChange}
                 />
             </div>
 
-            <div className={style.filterControls}>
-                <div className={style.filterItem}>
+            <div className="filterControls">
+                <div className="filterItem">
                     <label htmlFor="status">Status</label>
                     <select
                         name="status"
@@ -50,7 +50,7 @@ function Filter({ filters = {}, onFilterChange, onResetFilter }) {
                     </select>
                 </div>
 
-                <div className={style.filterItem}>
+                <div className="filterItem">
                     <label htmlFor="priorityOrder">Priority</label>
                     <select
                         name="priorityOrder"
@@ -64,7 +64,7 @@ function Filter({ filters = {}, onFilterChange, onResetFilter }) {
                     </select>
                 </div>
 
-                <div className={style.filterItem}>
+                <div className="filterItem">
                     <label htmlFor="dueDateOrder">Due date</label>
                     <select
                         name="dueDateOrder"
@@ -78,15 +78,13 @@ function Filter({ filters = {}, onFilterChange, onResetFilter }) {
                     </select>
                 </div>
 
-                {onResetFilter && (
-                    <button
-                        type="button"
-                        className={style.resetBtn}
-                        onClick={onResetFilter}
-                    >
-                        Reset Filter
-                    </button>
-                )}
+                <button
+                    type="button"
+                    className="resetBtn"
+                    onClick={onResetFilter}
+                >
+                    Reset Filter
+                </button>
             </div>
         </div>
     );

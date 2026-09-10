@@ -1,30 +1,30 @@
 @import '../GlobalStyle/variables';
 
-.formWrapper {
+.todo-form-formWrapper {
     padding-right: 24px;
     border-right: 1px solid #eee;
 }
 
-.formWrapper h2 {
+.todo-form-formWrapper h2 {
     color: $text-color;
     font-size: 16px;
     font-weight: 600;
     margin: 0 0 12px 0;
 }
 
-.createForm {
+.todo-form-createForm {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.formGroup {
+.todo-form-formGroup {
     display: flex;
     flex-direction: column;
     gap: 6px;
 }
 
-.formGroup label {
+.todo-form-formGroup label {
     font-size: 13px;
     font-weight: 600;
     color: #555;
@@ -32,9 +32,9 @@
     letter-spacing: 0.5px;
 }
 
-.formGroup input,
-.formGroup textarea,
-.formGroup select {
+.todo-form-formGroup input,
+.todo-form-formGroup textarea,
+.todo-form-formGroup select {
     padding: 7px 10px;
     border: 1.5px solid #e0e0e0;
     border-radius: 6px;
@@ -46,49 +46,49 @@
     font-family: inherit;
 }
 
-.formGroup input:focus,
-.formGroup textarea:focus,
-.formGroup select:focus {
+.todo-form-formGroup input:focus,
+.todo-form-formGroup textarea:focus,
+.todo-form-formGroup select:focus {
     border-color: $red-color;
     box-shadow: 0 0 0 3px rgba(184, 63, 69, 0.1);
     background: #fff;
 }
 
-.formGroup .inputError {
+.todo-form-formGroup .todo-form-inputError {
     border-color: #d32f2f;
 }
 
-.formGroup .inputError:focus {
+.todo-form-formGroup .todo-form-inputError:focus {
     border-color: #d32f2f;
     box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.12);
 }
 
-.errorMessage {
+.todo-form-errorMessage {
     color: #d32f2f;
     font-size: 12px;
     line-height: 1.4;
 }
 
-.formGroup textarea {
+.todo-form-formGroup textarea {
     min-height: 50px;
     resize: vertical;
 }
 
-.formGroup input::placeholder,
-.formGroup textarea::placeholder {
+.todo-form-formGroup input::placeholder,
+.todo-form-formGroup textarea::placeholder {
     color: #bbb;
 }
 
-.formRow {
+.todo-form-formRow {
     display: flex;
     gap: 10px;
 }
 
-.formRow .formGroup {
+.todo-form-formRow .todo-form-formGroup {
     flex: 1;
 }
 
-.submitBtn {
+.todo-form-submitBtn {
     padding: 8px 16px;
     background: $red-color;
     color: #fff;
@@ -101,11 +101,11 @@
     margin-top: 2px;
 }
 
-.submitBtn:hover {
+.todo-form-submitBtn:hover {
     background: darken($red-color, 8%);
     transform: translateY(-1px);
 }
 
-.submitBtn:active {
+.todo-form-submitBtn:active {
     transform: translateY(0);
 }
