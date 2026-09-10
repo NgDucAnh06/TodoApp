@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import style from './Form.module.scss';
+import './TodoForm.scss';
 
 const initialValues = {
     title: '',
@@ -46,7 +46,7 @@ function validate(values, todayString, existingTodos = []) {
     return errors;
 }
 
-function Form({ onAddTodo, existingTodos = [] }) {
+function TodoForm({ onAddTodo, existingTodos = [] }) {
     const [values, setValues] = useState(initialValues);
     const [errors, setErrors] = useState({});
 
@@ -73,7 +73,7 @@ function Form({ onAddTodo, existingTodos = [] }) {
 
         const validationErrors = validate(values, todayString, existingTodos);
 
-        //chuyển object thành array để kiểm tra length
+        //chuyển object thành array
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
             return;
@@ -93,11 +93,11 @@ function Form({ onAddTodo, existingTodos = [] }) {
     };
 
     return (
-        <div className={style.formWrapper}>
+        <div className="todo-form-formWrapper">
             <h2>Create todo</h2>
 
-            <form className={style.createForm} onSubmit={handleSubmit} noValidate>
-                <div className={style.formGroup}>
+            <form className="todo-form-createForm" onSubmit={handleSubmit} noValidate>
+                <div className="todo-form-formGroup">
                     <label htmlFor="title">Title</label>
                     <input
                         id="title"
@@ -106,16 +106,16 @@ function Form({ onAddTodo, existingTodos = [] }) {
                         value={values.title}
                         onChange={handleChange}
                         placeholder="Enter todo title..."
-                        className={errors.title ? style.inputError : ''}
+                        className={errors.title ? 'todo-form-inputError' : ''}
                     />
                     {errors.title && (
-                        <span id="title-error" className={style.errorMessage}>
+                        <span id="title-error" className="todo-form-errorMessage">
                             {errors.title}
                         </span>
                     )}
                 </div>
 
-                <div className={style.formGroup}>
+                <div className="todo-form-formGroup">
                     <label htmlFor="description">Description</label>
                     <textarea
                         id="description"
@@ -123,17 +123,17 @@ function Form({ onAddTodo, existingTodos = [] }) {
                         value={values.description}
                         onChange={handleChange}
                         placeholder="Enter description..."
-                        className={errors.description ? style.inputError : ''}
+                        className={errors.description ? 'todo-form-inputError' : ''}
                     />
                     {errors.description && (
-                        <span id="description-error" className={style.errorMessage}>
+                        <span id="description-error" className="todo-form-errorMessage">
                             {errors.description}
                         </span>
                     )}
                 </div>
 
-                <div className={style.formRow}>
-                    <div className={style.formGroup}>
+                <div className="todo-form-formRow">
+                    <div className="todo-form-formGroup">
                         <label htmlFor="priority">Priority</label>
                         <select id="priority" name="priority" value={values.priority} onChange={handleChange}>
                             <option value="High">High</option>
@@ -142,7 +142,7 @@ function Form({ onAddTodo, existingTodos = [] }) {
                         </select>
                     </div>
 
-                    <div className={style.formGroup}>
+                    <div className="todo-form-formGroup">
                         <label htmlFor="dueDate">Due date</label>
                         <input
                             id="dueDate"
@@ -151,17 +151,17 @@ function Form({ onAddTodo, existingTodos = [] }) {
                             min={todayString}
                             value={values.dueDate}
                             onChange={handleChange}
-                            className={errors.dueDate ? style.inputError : ''}
+                            className={errors.dueDate ? 'todo-form-inputError' : ''}
                         />
                         {errors.dueDate && (
-                            <span id="due-date-error" className={style.errorMessage}>
+                            <span id="due-date-error" className="todo-form-errorMessage">
                                 {errors.dueDate}
                             </span>
                         )}
                     </div>
                 </div>
 
-                <button type="submit" className={style.submitBtn}>
+                <button type="submit" className="todo-form-submitBtn">
                     Add Todo
                 </button>
             </form>
@@ -169,4 +169,4 @@ function Form({ onAddTodo, existingTodos = [] }) {
     );
 }
 
-export default Form;
+export default TodoForm;

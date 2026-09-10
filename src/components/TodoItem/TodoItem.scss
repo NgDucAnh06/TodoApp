@@ -1,6 +1,6 @@
 @import '../GlobalStyle/variables';
 
-.row {
+.todo-item-row {
     transition: background-color 0.2s ease;
 
     &:hover {
@@ -8,37 +8,37 @@
     }
 }
 
-.completed {
+.todo-item-completed {
     color: $gray-color;
 
-    .todoText {
+    .todo-item-todoText {
         text-decoration: line-through 2px $gray-color;
     }
 
-    .priorityBadge {
+    .todo-item-priorityBadge {
         opacity: 0.5;
     }
 }
 
-.todoCell {
+.todo-item-todoCell {
     display: flex;
     align-items: center;
     gap: 10px;
     cursor: pointer;
 }
 
-.todoText {
+.todo-item-todoText {
     font-weight: 500;
 }
 
-.checkbox {
+.todo-item-checkbox {
     width: 17px;
     height: 17px;
     accent-color: $red-color;
     cursor: pointer;
 }
 
-.priorityBadge {
+.todo-item-priorityBadge {
     display: inline-block;
     padding: 3px 10px;
     border-radius: 20px;
@@ -47,27 +47,27 @@
     text-align: center;
 }
 
-.priorityHigh {
+.todo-item-priorityHigh {
     background-color: #fee2e2;
     color: #dc2626;
 }
 
-.priorityMedium {
+.todo-item-priorityMedium {
     background-color: #fef3c7;
     color: #d97706;
 }
 
-.priorityLow {
+.todo-item-priorityLow {
     background-color: #e0e7ff;
     color: #4f46e5;
 }
 
-.actionCell {
+.todo-item-actionCell {
     display: flex;
     gap: 8px;
 }
 
-.deleteBtn {
+.todo-item-deleteBtn {
     padding: 6px 14px;
     border: none;
     border-radius: 6px;

@@ -1,21 +1,21 @@
 @import '../GlobalStyle/variables';
 
-.tableWrapper {
+.todo-list-tableWrapper {
 }
 
-.tableWrapper h2 {
+.todo-list-tableWrapper h2 {
     color: $text-color;
     font-size: 16px;
     font-weight: 600;
     margin: 0 0 12px 0;
 }
 
-.todoTable {
+.todo-list-todoTable {
     width: 100%;
     border-collapse: collapse;
 }
 
-.todoTable thead th {
+.todo-list-todoTable thead th {
     text-align: left;
     padding: 8px 10px;
     font-size: 11px;
@@ -26,18 +26,18 @@
     border-bottom: 2px solid #eee;
 }
 
-.todoTable tbody td {
+.todo-list-todoTable tbody td {
     padding: 8px 10px;
     font-size: 13px;
     color: $text-color;
     border-bottom: 1px solid #f0f0f0;
 }
 
-.todoTable tbody tr:last-child td {
+.todo-list-todoTable tbody tr:last-child td {
     border-bottom: none;
 }
 
-.emptyRow {
+.todo-list-emptyRow {
     text-align: center;
     color: #bbb;
     padding: 24px 10px !important;
