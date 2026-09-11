@@ -1,10 +1,15 @@
 import TodoItem from '../TodoItem/TodoItem';
 import './TodoList.scss';
 
-function TodoList({ todos, onDeleteTodo, onCompleteTodo }) {
+function TodoList({ todos, onDeleteTodo, onCompleteTodo, notification }) {
     return (
         <div className="todo-list-tableWrapper">
             <h2>Todo list</h2>
+            {notification && (
+                <div className="todo-list-notification">
+                    {notification}
+                </div>
+            )}
 
             <table className="todo-list-todoTable">
                 <thead>

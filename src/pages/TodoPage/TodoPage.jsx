@@ -5,12 +5,18 @@ import Header from '../../components/Header/header';
 import TodoForm from '../../components/TodoForm/TodoForm';
 import Filter from '../../components/Filter/filter';
 import TodoList from '../../components/TodoList/TodoList';
-import { addTodoRequest, deleteTodoRequest, completeTodoRequest, fetchTodosRequest } from '../../redux/todos/todoActions';
+import {
+    addTodoRequest,
+    deleteTodoRequest,
+    completeTodoRequest,
+    fetchTodosRequest,
+    clearNotification,
+} from '../../redux/todos/todoActions';
 import { changeFilter, resetFilter } from '../../redux/filters/filterActions';
 
 function TodoPage() {
     const dispatch = useDispatch();
-    const { items: todos, error } = useSelector((state) => state.todos);
+    const { items: todos, error, notification } = useSelector((state) => state.todos);
     const filters = useSelector((state) => state.filters);
     const sortedList = useMemo(() => filterTodos(todos, filters), [todos, filters]);
 
@@ -18,6 +24,16 @@ function TodoPage() {
     useEffect(() => {
         dispatch(fetchTodosRequest());
     }, [dispatch]);
+
+    // tự động ẩn thông báo sau 3 giây
+    useEffect(() => {
+        if (notification) {
+            const timer = setTimeout(() => {
+                dispatch(clearNotification());
+            }, 3000);
+            return () => clearTimeout(timer);
+        }
+    }, [notification, dispatch]);
 
     const handleAddTodo = (todo) => {
         dispatch(addTodoRequest(todo));
@@ -47,7 +63,12 @@ function TodoPage() {
                 <div>
                     <Filter filters={filters} onFilterChange={handleFilterChange} onResetFilter={handleResetFilter} />
                     {error && <div className="error-banner">{error}</div>}
-                    <TodoList todos={sortedList} onDeleteTodo={handleDeleteTodo} onCompleteTodo={handleCompleteTodo} />
+                    <TodoList
+                        todos={sortedList}
+                        onDeleteTodo={handleDeleteTodo}
+                        onCompleteTodo={handleCompleteTodo}
+                        notification={notification}
+                    />
                 </div>
             </div>
         </div>
