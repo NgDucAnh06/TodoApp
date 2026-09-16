@@ -57,7 +57,7 @@ function TodoForm({ onAddTodo, existingTodos = [] }) {
 
         setValues((previousValues) => ({
             ...previousValues,
-            [name]: value, // computed property name
+            [name]: value,
         }));
 
         if (errors[name]) {
