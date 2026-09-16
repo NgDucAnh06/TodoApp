@@ -15,7 +15,7 @@ import {
     completeTodoRequest,
     completeTodoSuccess,
     setError,
-} from './todoActions';
+} from './todoSlice';
 
 function* fetchTodosSaga() {
     try {

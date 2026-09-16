@@ -11,8 +11,8 @@ import {
     completeTodoRequest,
     fetchTodosRequest,
     clearNotification,
-} from '../../redux/todos/todoActions';
-import { changeFilter, resetFilter } from '../../redux/filters/filterActions';
+} from '../../redux/todos/todoSlice';
+import { changeFilter, resetFilter } from '../../redux/filters/filterSlice';
 
 function TodoPage() {
     const dispatch = useDispatch();

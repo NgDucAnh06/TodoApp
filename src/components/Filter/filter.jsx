@@ -91,3 +91,4 @@ function Filter({ filters = {}, onFilterChange, onResetFilter }) {
 }
 
 export default Filter;
+
